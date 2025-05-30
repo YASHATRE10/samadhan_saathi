@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
             Center(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.asset('assets/agri_logo.jpg', height: 100),
+                child: Image.asset('assets/logo/logo.jpg', height: 100),
               ),
             ),
             const SizedBox(height: 12),

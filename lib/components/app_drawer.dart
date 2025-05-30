@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
   final Function(BuildContext)? onSelectLanguage;
+  final VoidCallback? onHomeTap;  // Add callback for Home tap
 
-  const AppDrawer({super.key, this.onSelectLanguage});
+  const AppDrawer({super.key, this.onSelectLanguage, this.onHomeTap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class AppDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset('assets/agri_logo.jpg', height: 60),
+                Image.asset('assets/logo/logo.jpg', height: 60),
                 const SizedBox(height: 10),
                 const Text(
                   'SamadhanSaathi ⛅',
@@ -29,6 +30,15 @@ class AppDrawer extends StatelessWidget {
               ],
             ),
           ),
+          _drawerItem(Icons.home, 'Home', onTap: () {
+            // If a callback is provided, call it
+            if (onHomeTap != null) {
+              onHomeTap!();
+            } else {
+              // Otherwise, default navigation to home page (replace with your route)
+              Navigator.of(context).pushReplacementNamed('/home');
+            }
+          }),
           _drawerItem(Icons.person, 'User Profile'),
           _drawerItem(Icons.contact_mail, 'Contact'),
           _drawerItem(Icons.info, 'About Us'),
