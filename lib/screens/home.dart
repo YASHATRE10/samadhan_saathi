@@ -1,32 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:samadhan_saathi/screens/mini_sahyadri.dart';
 import 'package:samadhan_saathi/screens/govt_scheme.dart';
-import 'package:samadhan_saathi/components/app_drawer.dart'; 
+import 'package:samadhan_saathi/screens/complaint_page.dart';
+import 'package:samadhan_saathi/components/app_drawer.dart';
+import 'package:samadhan_saathi/screens/complaint_history.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  void _selectLanguage(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) => Container(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text('Choose Language',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            const Divider(),
-            ListTile(title: const Text('English 🇬🇧'), onTap: () => Navigator.pop(context)),
-            ListTile(title: const Text('Hindi 🇮🇳'), onTap: () => Navigator.pop(context)),
-            ListTile(title: const Text('Marathi 🇮🇳'), onTap: () => Navigator.pop(context)),
-          ],
-        ),
-      ),
-    );
-  }
 
   void _navigateTo(BuildContext context, Widget page) {
     Navigator.push(
@@ -38,7 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: AppDrawer(onSelectLanguage: _selectLanguage), 
+      drawer: const AppDrawer(), // ✅ Fixed: Removed onSelectLanguage
       appBar: AppBar(
         title: const Text('SamadhanSaathi 🌾'),
         backgroundColor: Colors.green[800],
@@ -62,16 +42,34 @@ class HomePage extends StatelessWidget {
                 crossAxisSpacing: 12,
                 childAspectRatio: 1.1,
                 children: [
-                  _buildTile(context, 'File Complaint', Icons.report,
-                      const [Colors.orange, Colors.deepOrange]),
-                  _buildTile(context, 'Complaint History', Icons.history,
-                      [Colors.green.shade600!, Colors.green.shade800!]),
-                  _buildTile(context, 'Mini Sahyadri', Icons.article,
-                      [Colors.green.shade400!, Colors.green.shade700!],
-                      onTap: () => _navigateTo(context, const MiniSahyadriPage())),
-                  _buildTile(context, 'Govt Schemes', Icons.account_balance,
-                      const [Colors.teal, Colors.green],
-                      onTap: () => _navigateTo(context, const GovtSchemesPage())),
+                  _buildTile(
+                    context,
+                    'File Complaint',
+                    Icons.report,
+                    const [Colors.orange, Colors.deepOrange],
+                    onTap: () => _navigateTo(context, const ComplaintPage()),
+                  ),
+                  _buildTile(
+                    context,
+                    'Complaint History',
+                    Icons.history,
+                    [Colors.green.shade600!, Colors.green.shade800!],
+                    onTap: () => _navigateTo(context, ComplaintHistoryPage()),
+                  ),
+                  _buildTile(
+                    context,
+                    'Mini Sahyadri',
+                    Icons.article,
+                    [Colors.green.shade400!, Colors.green.shade700!],
+                    onTap: () => _navigateTo(context, const MiniSahyadriPage()),
+                  ),
+                  _buildTile(
+                    context,
+                    'Govt Schemes',
+                    Icons.account_balance,
+                    const [Colors.teal, Colors.green],
+                    onTap: () => _navigateTo(context, const GovtSchemesPage()),
+                  ),
                 ],
               ),
             ),
@@ -128,9 +126,7 @@ class HomePage extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+                  fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ],

@@ -5,6 +5,7 @@ import 'package:samadhan_saathi/screens/register.dart';
 import 'package:samadhan_saathi/screens/home.dart';
 import 'package:samadhan_saathi/screens/tahasildar_login.dart';
 import 'package:samadhan_saathi/screens/user_login.dart';
+import 'package:samadhan_saathi/screens/settings.dart';
 
 final Map<String, WidgetBuilder> routes = {
   '/': (context) => SplashScreen(),
@@ -13,4 +14,5 @@ final Map<String, WidgetBuilder> routes = {
   '/home': (context) => HomePage(),
   '/userLogin': (context) => UserLoginPage(),
   '/tahasildarLogin': (context) => TahasildarLoginPage(),
+  '/settings': (context) => SettingsPage(), // Add this
 };

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class AppDrawer extends StatelessWidget {
-  final Function(BuildContext)? onSelectLanguage;
   final VoidCallback? onHomeTap;
 
-  const AppDrawer({super.key, this.onSelectLanguage, this.onHomeTap});
+  const AppDrawer({super.key, this.onHomeTap});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class AppDrawer extends StatelessWidget {
           DrawerHeader(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.green.shade800!, Colors.green.shade500!],
+                colors: [Colors.green.shade800, Colors.green.shade500],
               ),
             ),
             child: Column(
@@ -30,20 +30,63 @@ class AppDrawer extends StatelessWidget {
               ],
             ),
           ),
-          _drawerItem(Icons.home, 'Home', onTap: () {
+          _drawerItem(Icons.home, 'home'.tr(), onTap: () {
             if (onHomeTap != null) {
               onHomeTap!();
             } else {
               Navigator.of(context).pushReplacementNamed('/home');
             }
           }),
-          _drawerItem(Icons.person, 'User Profile'),
-          _drawerItem(Icons.contact_mail, 'Contact'),
-          _drawerItem(Icons.info, 'About Us'),
-          _drawerItem(Icons.settings, 'Settings', onTap: () {
-            if (onSelectLanguage != null) onSelectLanguage!(context);
-          }),
-          _drawerItem(Icons.logout, 'Log Out'),
+          _drawerItem(Icons.person, 'user_profile'.tr()),
+          _drawerItem(Icons.contact_mail, 'contact'.tr()),
+          _drawerItem(Icons.info, 'about_us'.tr()),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text('select_language'.tr(),
+                style: const TextStyle(fontWeight: FontWeight.bold)),
+          ),
+          ListTile(
+            leading: const Icon(Icons.language),
+            title: const Text('English'),
+            onTap: () {
+              context.setLocale(const Locale('en'));
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.language),
+            title: const Text('हिन्दी'),
+            onTap: () {
+              context.setLocale(const Locale('hi'));
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.language),
+            title: const Text('मराठी'),
+            onTap: () {
+              context.setLocale(const Locale('mr'));
+              Navigator.pop(context);
+            },
+          ),
+          const Divider(),
+          _drawerItem(
+  Icons.settings,
+  'settings'.tr(),
+  onTap: () {
+    Navigator.pop(context); // Close drawer first
+    Navigator.pushNamed(context, '/settings');
+  },
+),
+_drawerItem(
+  Icons.logout,
+  'log_out'.tr(),
+  onTap: () {
+    Navigator.pop(context); // Close drawer first
+    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+  },
+),
         ],
       ),
     );
