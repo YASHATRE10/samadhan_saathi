@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "215662695057",
+    "project_id": "samadhansaathi-804b2",
+    "storage_bucket": "samadhansaathi-804b2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215662695057:android:5e694e149a5ed2e3d06530",
+        "android_client_info": {
+          "package_name": "com.example.samadhan_saathi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeB3FO7ATJmQJHrrflzoe0Viy3ZIS3mac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
