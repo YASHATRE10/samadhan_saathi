@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart'; 
 
 class LoginSelectionPage extends StatelessWidget {
   const LoginSelectionPage({super.key});
@@ -19,9 +20,9 @@ class LoginSelectionPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/logo/logo.jpg',
-                  height: 120,
+                Lottie.asset(
+                  'assets/lottie/selection.json', // Lottie file
+                  height: 180,
                 ),
                 const SizedBox(height: 30),
                 _buildLoginOption(
