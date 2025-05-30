@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:samadhan_saathi/components/app_drawer.dart';
 
 class MiniSahyadriPage extends StatelessWidget {
-  const MiniSahyadriPage({super.key}); // Add a const constructor
+  const MiniSahyadriPage({super.key}); 
 
-  final List<Map<String, dynamic>> newsItems = const [ // Make the list const
+  final List<Map<String, dynamic>> newsItems = const [
     {
       'title': 'Farmers advised on upcoming monsoon patterns',
       'date': '2025-05-28',
