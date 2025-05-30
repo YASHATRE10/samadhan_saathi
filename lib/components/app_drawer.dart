@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
   final Function(BuildContext)? onSelectLanguage;
-  final VoidCallback? onHomeTap;  // Add callback for Home tap
+  final VoidCallback? onHomeTap;
 
   const AppDrawer({super.key, this.onSelectLanguage, this.onHomeTap});
 
@@ -31,11 +31,9 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           _drawerItem(Icons.home, 'Home', onTap: () {
-            // If a callback is provided, call it
             if (onHomeTap != null) {
               onHomeTap!();
             } else {
-              // Otherwise, default navigation to home page (replace with your route)
               Navigator.of(context).pushReplacementNamed('/home');
             }
           }),
